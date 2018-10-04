@@ -55,7 +55,7 @@ def store_dict(tf, current_out_file, current_dict):
     current_out_filename = os.path.join(
         args.outfolder, tf, current_out_file)
     with open(current_out_filename, 'w') as f:
-        json.dump(current_dict, f)
+        json.dump(current_dict, f, indent=2)
 
 
 args = parse_cl_args()
