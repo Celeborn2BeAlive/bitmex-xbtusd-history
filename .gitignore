@@ -1,2 +1,3 @@
 .vscode/
 scripts/env/
+__pycache__
