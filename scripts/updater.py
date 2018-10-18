@@ -6,6 +6,8 @@ import os
 import bitmex
 import time
 
+from utils import timedeltas, ensure_mkdir, build_index
+
 
 def parse_cl_args():
     parser = argparse.ArgumentParser(description='c2ba crypto scraper')
@@ -14,21 +16,6 @@ def parse_cl_args():
     )
     return parser.parse_args()
 
-
-def ensure_mkdir(p):
-    if not os.path.exists(p):
-        os.mkdir(p)
-    else:
-        if not os.path.isdir(p):
-            raise RuntimeError("{} is not a directory.".format(p))
-
-
-timedeltas = {
-    "1m": timedelta(minutes=1),
-    "5m": timedelta(minutes=5),
-    "1h": timedelta(hours=1),
-    "1d": timedelta(days=1)
-}
 
 client = bitmex.bitmex(test=False)
 
@@ -150,3 +137,5 @@ for tf in timedeltas.keys():
             # current_dict["closeDate"].append(str(candle["closeDate"]))
 
         store_dict(tf, current_out_file, current_dict)
+
+    build_index(args.outfolder)

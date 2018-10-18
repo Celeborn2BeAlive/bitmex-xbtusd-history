@@ -4,6 +4,8 @@ import pandas as pd
 import json
 import os
 
+from utils import timedeltas
+
 
 def parse_cl_args():
     parser = argparse.ArgumentParser(
@@ -15,14 +17,6 @@ def parse_cl_args():
         'outfile', help='Path to output json file'
     )
     return parser.parse_args()
-
-
-timedeltas = {
-    "1m": timedelta(minutes=1),
-    "5m": timedelta(minutes=5),
-    "1h": timedelta(hours=1),
-    "1d": timedelta(days=1)
-}
 
 
 def load_buckets(path_to_history, timeframe):

@@ -24,3 +24,11 @@ def build_index(database_path):
                 index[filename] = [timestamp, endTimestamp]
         with open(os.path.join(database_path, '{}-index.json'.format(timeframe)), 'w') as f:
             json.dump(index, f, indent=4)
+
+
+def ensure_mkdir(p):
+    if not os.path.exists(p):
+        os.mkdir(p)
+    else:
+        if not os.path.isdir(p):
+            raise RuntimeError("{} is not a directory.".format(p))
