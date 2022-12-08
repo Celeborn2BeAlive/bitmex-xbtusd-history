@@ -1,7 +1,7 @@
 bitmex==0.2.2
 bravado==10.1.0
 bravado-core==5.0.7
-certifi==2018.8.24
+certifi==2022.12.7
 chardet==3.0.4
 idna==2.7
 jsonref==0.1
